@@ -11,7 +11,9 @@ const port = process.env.PORT || 3000;
 const client = redis.createClient({
     url: process.env.REDIS_URL // Redis URL from environment variables
 });
-
+client.once('connect',()=>{
+    console.log('successfuly connect to the db')
+})
 client.on('error', (err) => {
     console.error('Redis Client Error:', err);
 });
